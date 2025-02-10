@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Tasks with Delay</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        text-align: center;
+        padding: 20px;
+      }
+      .container {
+        max-width: 450px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      .task {
+        font-size: 18px;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .visible {
+        opacity: 1;
+      }
+      /* Different colored blocks */
+      #isAdult { background-color: #2a9d8f; } /* Greenish */
+      #addition { background-color: #e76f51; } /* Reddish */
+      #multiplication { background-color: #f4a261; } /* Orange */
+      #modulus { background-color: #264653; } /* Dark Blue */
+      #isEven { background-color: #6a0572; } /* Purple */
+      #numbers { background-color: #1d3557; } /* Navy */
+      #square { background-color: #457b9d; } /* Light Blue */
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>JavaScript Tasks Output</h1>
+      <p class="task" id="isAdult">Loading...</p>
+      <p class="task" id="addition">Loading...</p>
+      <p class="task" id="multiplication">Loading...</p>
+      <p class="task" id="modulus">Loading...</p>
+      <p class="task" id="isEven">Loading...</p>
+      <p class="task" id="numbers">Loading...</p>
+      <p class="task" id="square">Loading...</p>
+    </div>
+
+    <script>
+      function showTask(id, text, delay) {
+        setTimeout(() => {
+          document.getElementById(id).innerText = text;
+          document.getElementById(id).classList.add("visible");
+        }, delay);
+      }
+
+      // Step-by-step execution with 1-second delay for each task
+      let delay = 1000; // 1 second
+
+      // Task 1: Check if a person is an adult
+      let age = 25;
+      let isAdult = age >= 18 ? "Is Adult: Yes" : "Is Adult: No";
+      showTask("isAdult", isAdult, delay);
+
+      // Task 2: Perform arithmetic operations
+      let x = 10, y = 5;
+      showTask("addition", `Addition: ${x} + ${y} = ${x + y}`, delay * 2);
+      showTask("multiplication", `Multiplication: ${x} × ${y} = ${x * y}`, delay * 3);
+      showTask("modulus", `Modulus: ${x} % ${y} = ${x % y}`, delay * 4);
+
+      // Task 3: Check if a number is even or odd
+      let n = 7;
+      let isEven = (n % 2 === 0) ? `${n} is Even` : `${n} is Odd`;
+      showTask("isEven", isEven, delay * 5);
+
+      // Task 4: Store numbers from 1 to 5 in an array
+      let numbers = [];
+      for (let i = 1; i <= 5; i++) {
+        numbers.push(i);
+      }
+      showTask("numbers", `Numbers: ${numbers.join(", ")}`, delay * 6);
+
+      // Task 5: Function to return the square of a number
+      function square(num) {
+        return num * num;
+      }
+      showTask("square", `Square of 4: ${square(4)}`, delay * 7);
+    </script>
+
+  </body>
+</html>
